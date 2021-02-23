@@ -11,9 +11,9 @@ module.exports = {
             commandName = args.shift().toLowerCase();
         }
 
-        const command = client.commands.get(commandName) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName)) || undefined;
+        const command = client.commands.get(commandName) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
 
-        const deafultEmbed = new Discord.MessageEmbed()
+        const defaultEmbed = new Discord.MessageEmbed()
             .setTitle(`Server: \`${message.channel.guild.name}\``)
             .setDescription(`Prefix: \`${prefix}\``)
             .setColor('#7CFC00')
@@ -22,10 +22,10 @@ module.exports = {
             .addFields(
                 {name: 'Moderation:', value: '`Purge`, `Kick`, `Ban`'},
                 {name: 'Utility:', value: '`Ping`'},
-                {name: 'Misc', value: '`8Ball`'}
+                {name: 'Misc:', value: '`8Ball`'}
             );
 
-        if (!command || !commandName) return message.channel.send(deafultEmbed);
+        if (!command || !commandName) return message.channel.send(defaultEmbed);
 
         try {
             const newEmbed = new Discord.MessageEmbed()
@@ -33,7 +33,7 @@ module.exports = {
                 .setDescription(command.description)
                 .setColor('#7CFC00')
                 .addField('Aliases', command.aliases.join(', ') || 'None')
-                .setFooter(`Requested By ${message.author.username}#${message.author.discriminator}`, message.author.displayAvatarURL())
+                .setFooter(`Requested By ${message.author.tag}`, message.author.displayAvatarURL())
                 .setTimestamp();
 
             return message.channel.send(newEmbed);
