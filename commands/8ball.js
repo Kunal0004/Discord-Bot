@@ -12,7 +12,7 @@ module.exports = {
             .setTitle("`🎱` 8Ball")
             .addFields({
                 name: `${message.author.username}'s Question:`,
-                value: args.join(' '), {
+                value: args.join(' ')}, {
                 name: `Answer:`,
                 value: questions[Math.floor(Math.random()*questions.length)]
             })
