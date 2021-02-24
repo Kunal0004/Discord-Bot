@@ -11,7 +11,7 @@ module.exports = {
             return ['❗'].includes(reaction.emoji.name) && user.id === message.author.id;
         };
 
-        //todo: add it so you cant use this command in dms
+       if (message.guild === null) return message.channel.send('This command is server only!')
        if (!message.member.hasPermission('KICK_MEMBERS')) return message.channel.send('You are missing permission: `kick members`');
        if (!message.guild.me.hasPermission('KICK_MEMBERS')) return message.channel.send('Iam missing permission: `kick members`');
 
