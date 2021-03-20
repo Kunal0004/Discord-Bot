@@ -1,2 +1,4 @@
 # Discord-Bot
-Basic Discord moderation bot - this is still a work in progress.
+Template Discord Bot.
+
+Put your bot token and prefix? in `.config` then run `node bot.js`
